@@ -15,7 +15,7 @@ const CategoryItemsDisplay = () => {
       const itemsWithUrls = await Promise.all(snapshot.docs.map(async doc => {
         const data = doc.data();
         const imageUrl = await getImageUrl(data.image);
-        return { ...data, image: imageUrl  };
+        return { ...data, imageUrl: imageUrl };
       }));
       setItems(itemsWithUrls);
     };
