@@ -1,109 +1,134 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
+/* General layout adjustments */
+.items-display {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
-}
-
-.form-container {
-    max-width: 800px;
-    margin: 0 auto;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
     padding: 20px;
+}
+
+.uniform-card {
+    width: calc(25% - 20px);
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
-.input-group {
-    margin-bottom: 20px;
+.uniform-image {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
 }
 
-.input-group label {
-    display: block;
-    margin-bottom: 5px;
+.card-content {
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.uniform-name, .uniform-description, .uniform-price, .size-select, .stock-alert, .add-to-cart-button {
+    margin-bottom: 10px;
+}
+
+.uniform-price {
+    font-size: 1rem;
     font-weight: bold;
     color: #333;
 }
 
-.input-group input {
-    width: 100%;
+.add-to-cart-button, .quantity-controls button {
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1) inset;
-    transition: border-color 0.3s;
-}
-
-.input-group input:focus {
-    border-color: blue;
-    outline: none;
-}
-
-button {
-    padding: 10px 20px;
-    background-color: #007bff;
+    background-color: #000;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background 0.3s;
+    width: 48%;
+}
+
+.add-to-cart-button:hover, .quantity-controls button:hover {
+    background-color: #333;
+}
+
+.quantity-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.quantity-controls button {
+    background-color: #ccc;
+}
+
+.quantity-controls span {
+    font-size: 1rem;
+}
+
+@media (min-width: 1024px) {
+    .uniform-card {
+        flex: 1 0 calc(25% - 20px);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1023px) {
+    .uniform-card {
+        flex: 1 0 calc(50% - 20px);
+    }
+}
+
+@media (max-width: 767px) {
+    .uniform-card {
+        flex: 1 0 100%;
+    }
+}
+
+/* UniformSelector component specific styles */
+.form-container {
+    max-width: 600px;
+    margin: 30px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+}
+
+select {
+    width: 100%;
+    padding: 10px 15px;
+    margin-bottom: 20px;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 16px;
+    line-height: 1.5;
+    cursor: pointer;
+}
+
+button {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
 }
 
 button:hover {
     background-color: #0056b3;
 }
 
-.uniform-cards {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-}
-
-.category-card {
-    width: calc(33.333% - 20px);
-    padding: 20px;
-    background-color: #fafafa;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.category-image {
-    width: 100%;
-    height: auto;
-}
-
 @media (max-width: 768px) {
-    .category-card {
-        width: calc(50% - 20px);
+    .form-container {
+        padding: 15px;
+        margin: 20px;
     }
-}
-
-@media (max-width: 480px) {
-    .category-card {
-        width: 100%;
-    }
-}
-
-
-/* UniformSelector.css */
-.select-dropdown {
-    color: black; /* Change this to a visible color */
-    background-color: white; /* Ensure background contrast */
-}
-
-/* Apply styles to your dropdown */
-select {
-    -webkit-appearance: none; /* Removes default styling on WebKit browsers */
-    -moz-appearance: none; /* Removes default styling for Firefox */
-    appearance: none; /* Removes default styling */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    background: white url('./image.png') no-repeat right 10px center; /* Use a custom down arrow icon */
-    background-size: 12px; /* Adjust size as needed */
 }

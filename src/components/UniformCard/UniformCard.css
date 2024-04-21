@@ -1,78 +1,93 @@
 .items-display {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: flex-start; /* Aligns items to the start */
-    align-items: flex-start; /* Aligns items at the start of the container vertically */
-    padding: 20px; /* Padding around the container */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start; /* Aligns items to the start */
+  align-items: flex-start; /* Aligns items at the start of the container vertically */
+  padding: 20px; /* Padding around the container */
 }
 
 .uniform-card {
-    width: calc(25% - 20px); /* Width for 4 items per row, subtract space for margins */
-    margin: 10px; /* Margin around each card */
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  width: calc(25% - 20px); /* Width for 4 items per row, subtract space for margins */
+  margin: 10px; /* Margin around each card */
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .uniform-image {
-    width: 100%;
-    height: auto; /* Adjust height to maintain 1:1 aspect ratio based on width */
-    aspect-ratio: 1 / 1; /* Maintains a 1:1 aspect ratio */
-    object-fit: cover;
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Maintains a 1:1 aspect ratio */
+  object-fit: cover;
 }
 
 .card-content {
-    padding: 15px;
-    display: flex;
-    flex-direction: column;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
 }
 
 .uniform-name, .uniform-description, .uniform-price {
-    margin-bottom: 10px; /* Consistent bottom margin for text */
+  margin-bottom: 10px; /* Consistent bottom margin for text */
 }
 
 .size-select, .stock-alert, .add-to-cart-button {
-    margin-bottom: 10px; /* Consistent bottom margin for interactive elements */
+  margin-bottom: 10px; /* Consistent bottom margin for interactive elements */
 }
 
 .uniform-price {
-    font-size: 1rem;
-    font-weight: bold;
-    color: #333;
+  font-size: 1rem;
+  font-weight: bold;
+  color: #333;
 }
 
-.add-to-cart-button {
-    padding: 10px;
-    background-color: #000;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background 0.3s;
+.add-to-cart-button, .quantity-controls button {
+  padding: 10px;
+  background-color: #000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s;
+  width: 48%; /* Adjust width for side by side display */
 }
 
-.add-to-cart-button:hover {
-    background-color: #333;
+.add-to-cart-button:hover, .quantity-controls button:hover {
+  background-color: #333;
+}
+
+.quantity-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px; /* Added margin to separate from size selector */
+}
+
+.quantity-controls button {
+  background-color: #ccc; /* Lighter background for less emphasis */
+}
+
+.quantity-controls span {
+  font-size: 1rem;
 }
 
 /* Responsive layout adjustments */
 @media (min-width: 1024px) {
-    .uniform-card {
-        flex: 1 0 calc(25% - 20px); /* Adjusts to 4 cards in a row */
-    }
+  .uniform-card {
+      flex: 1 0 calc(25% - 20px); /* Adjusts to 4 cards in a row */
+  }
 }
 
 @media (min-width: 768px) and (max-width: 1023px) {
-    .uniform-card {
-        flex: 1 0 calc(50% - 20px); /* Adjusts to 2 cards in a row */
-    }
+  .uniform-card {
+      flex: 1 0 calc(50% - 20px); /* Adjusts to 2 cards in a row */
+  }
 }
 
 @media (max-width: 767px) {
-    .uniform-card {
-        flex: 1 0 100%; /* Stacks cards on smaller screens */
-    }
+  .uniform-card {
+      flex: 1 0 100%; /* Stacks cards on smaller screens */
+  }
 }

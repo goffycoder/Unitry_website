@@ -1,71 +1,66 @@
-
 .header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color:#fafafa; 
-    padding: 10px 20px;
-    height: 80px;
-    border-bottom: none; 
-    box-shadow: none; 
-  }
-  
-  .nav-center {
-    display: flex;
-    justify-content: center;
-    flex-grow: 1;
-  }
-  
-  .nav-item {
-    margin: 0 15px;
-    color: #1c1c1c;
-    text-decoration: none;
-    /* font-family: 'GDSherpaVariable', sans-serif; */
-    font-weight: bold;
-    transition: color 0.3s;
-  }
-  
-  .nav-item:hover {
-    cursor: pointer; 
-    color: black; 
-  }
-  
-  .nav-right {
-    display: flex;
-    align-items: center;
-  }
-  
-  .button {
-    padding: 10px 20px;
-    margin: 0 10px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: #ffffff;
-    font-weight: bold;
-    text-decoration: none;
-    transition: background-color 0.3s; 
-  }
-  
-  .button:hover {
-    background-color: #3c3c3c; 
-  }
-  
-  .sign-in {
-    background-color: #545454;
-  }
-  
-  .sign-up {
-    background-color: #444444;
-  }
-  
-  .logo img {
-    height: 64px;
-    width: auto;
-    transition: transform 0.3s; 
-  }
-  
-  .logo img:hover {
-    transform: scale(1.05); 
-  }
-  
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fafafa;
+  padding: 10px 20px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo img {
+  height: 64px;
+  transition: transform 0.3s ease;
+}
+
+.logo img:hover {
+  transform: scale(1.1);
+}
+
+.nav-center {
+  display: flex;
+  justify-content: center;
+  flex-grow: 1;
+}
+
+.nav-item {
+  margin: 0 15px;
+  color: #333;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.nav-item:hover {
+  color: #000;
+  cursor: pointer;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+}
+
+.button {
+  padding: 8px 16px;
+  background-color: #444;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #666;
+}
+
+.sign-in, .sign-out, .sign-up {
+  margin-left: 10px;
+}
+
+.sign-in, .sign-up {
+  background-color: #5C67F2;
+}
+
+.sign-out {
+  background-color: #ec624a;
+}
