@@ -3,7 +3,7 @@ import { useCart } from '../../context/CartContext';
 import './CartDisplay.css';
 
 const CartDisplay = () => {
-  const { items, removeFromCart, adjustQuantity } = useCart();
+  const { items, removeFromCart, adjustQuantity, calculateSubtotal } = useCart();
 
   return (
     <div className="cart-container">
@@ -18,7 +18,7 @@ const CartDisplay = () => {
               <p>Size: {item.selectedSize}</p>
               <p>Price: ${item.price}</p>
               <div className="quantity-controls">
-                <button onClick={() => adjustQuantity(item.id, item.selectedSize, item.quantity - 1)}>-</button>
+                <button onClick={() => adjustQuantity(item.id, item.selectedSize, Math.max(1, item.quantity - 1))}>-</button>
                 <span>{item.quantity}</span>
                 <button onClick={() => adjustQuantity(item.id, item.selectedSize, item.quantity + 1)}>+</button>
               </div>
@@ -27,6 +27,10 @@ const CartDisplay = () => {
           </div>
         ))
       )}
+      <div className="cart-subtotal">
+        <h3>Subtotal: ${calculateSubtotal()}</h3>
+        <button className="checkout-button">Checkout</button>
+      </div>
     </div>
   );
 };

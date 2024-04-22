@@ -1,10 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import './UniformCard.css';
 import { useCart } from '../../context/CartContext';
+import { Toast } from '../Toast'; 
 
 const UniformCard = ({ uniform }) => {
   const [selectedSize, setSelectedSize] = useState('');
-  const [quantity, setQuantity] = useState(1);  // State to keep track of the quantity
+  const [quantity, setQuantity] = useState(1);
   const { addToCart } = useCart();
 
   const handleAddToCart = () => {
@@ -13,8 +14,9 @@ const UniformCard = ({ uniform }) => {
     addToCart({
       ...uniform,
       selectedSize,
-      quantity: quantity
+      quantity
     });
+    Toast('Added to cart successfully', 'success'); // Assuming you have a Toast function for notifications
   };
 
   const handleQuantityChange = (delta) => {
@@ -23,9 +25,7 @@ const UniformCard = ({ uniform }) => {
 
   const renderSizeOptions = () => {
     return Object.entries(uniform.sizes).map(([size, details]) => (
-      <option key={size} value={size}>
-        {size}
-      </option>
+      <option key={size} value={size}>{size}</option>
     ));
   };
 
@@ -39,13 +39,11 @@ const UniformCard = ({ uniform }) => {
           <option value="">Select Size</option>
           {renderSizeOptions()}
         </select>
-        {selectedSize && (
-          <div className="quantity-controls">
-            <button onClick={() => handleQuantityChange(-1)} disabled={quantity <= 1}>-</button>
-            <span>{quantity}</span>
-            <button onClick={() => handleQuantityChange(1)}>+</button>
-          </div>
-        )}
+        <div className="quantity-controls">
+          <button onClick={() => handleQuantityChange(-1)} disabled={quantity <= 1}>-</button>
+          <span>{quantity}</span>
+          <button onClick={() => handleQuantityChange(1)}>+</button>
+        </div>
         <p className="uniform-price">Price: ${uniform.price}</p>
         <button className="add-to-cart-button" onClick={handleAddToCart}>Add to Cart</button>
       </div>
