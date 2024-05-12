@@ -1,0 +1,49 @@
+.categories-container {
+  text-align: center;
+  padding: 20px;
+  background-color: #f0f0f0; /* Light background color */
+}
+
+.categories-container h1 {
+  color: #333;
+  margin-bottom: 20px;
+  font-size: 2rem; /* Larger font size for the heading */
+}
+
+.category-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px; /* Space between the category items */
+}
+
+.category-item {
+  flex: 1;
+  cursor: pointer;
+  background-color: #ffffff; /* White background for each item */
+  border-radius: 10px; /* Rounded corners for the cards */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  padding: 15px;
+  transition: transform 0.3s ease-in-out; /* Smooth transformation on hover */
+}
+
+.category-item:hover {
+  transform: translateY(-10px); /* Lift effect on hover */
+}
+
+.category-item img {
+  width: 100%; /* Full width of the container */
+  height: auto; /* Maintain aspect ratio */
+  aspect-ratio: 4 / 3; /* Maintaining a 4:3 aspect ratio */
+}
+
+.category-item p {
+  margin-top: 10px; /* Space between image and text */
+  font-size: 1.2rem; /* Larger font size for visibility */
+  color: #333; /* Dark grey color for text */
+}
+
+@media (max-width: 768px) {
+  .category-buttons {
+    flex-direction: column; /* Stack the items on smaller screens */
+  }
+}

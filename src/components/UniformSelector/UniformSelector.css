@@ -21,7 +21,7 @@
 .uniform-image {
     width: 100%;
     height: auto;
-    aspect-ratio: 1 / 1;
+    aspect-ratio: 1/1;
     object-fit: cover;
 }
 
@@ -31,7 +31,12 @@
     flex-direction: column;
 }
 
-.uniform-name, .uniform-description, .uniform-price, .size-select, .stock-alert, .add-to-cart-button {
+.uniform-name,
+.uniform-description,
+.uniform-price,
+.size-select,
+.stock-alert,
+.add-to-cart-button {
     margin-bottom: 10px;
 }
 
@@ -41,7 +46,8 @@
     color: #333;
 }
 
-.add-to-cart-button, .quantity-controls button {
+.add-to-cart-button,
+.quantity-controls button {
     padding: 10px;
     background-color: #000;
     color: white;
@@ -52,7 +58,8 @@
     width: 48%;
 }
 
-.add-to-cart-button:hover, .quantity-controls button:hover {
+.add-to-cart-button:hover,
+.quantity-controls button:hover {
     background-color: #333;
 }
 
@@ -85,6 +92,23 @@
 @media (max-width: 767px) {
     .uniform-card {
         flex: 1 0 100%;
+    }
+}
+
+/* Mobile device adjustments */
+@media only screen and (max-width: 768px) {
+    .items-display {
+        flex-direction: column;
+    }
+
+    .uniform-image {
+        width: unset;
+        height: unset;
+        object-fit: cover;
+    }
+
+    .card-content {
+        padding: 10px;
     }
 }
 
