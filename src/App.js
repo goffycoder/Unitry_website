@@ -12,11 +12,13 @@ import SignIn from './components/Auth/SignIn';
 import SignUp from './components/Auth/SignUp';
 import Footer from './components/Footer/Footer'; 
 import Testimonials from './components/Testimonial/Testimonials';
-
 import UniformSelector from './components/UniformSelector/UniformSelector';
 import GendersAndProductCategories from './components/GendersAndProductCategories/GendersAndProductCategories';
 import CategoryItemsDisplay from './components/CategoryItemsDisplay/CategoryItemsDisplay';
 import CartDisplay from './components/CartDisplay/CartDisplay';
+import UserProfile from './components/Header/UsersProfile';  
+import OrderHistory from './components/Header/OrdersHistory';
+import Checkout from './components/Checkout/Checkout';
 
 // Import context
 import { AuthProvider } from "./context/AuthContext";
@@ -66,7 +68,10 @@ function App() {
               <Route path="/uniforms" element={<UniformSelector />} />
               <Route path="/genders-and-product-categories/:state/:district/:school" element={<GendersAndProductCategories />} />
               <Route path="/category-items-display/:state/:district/:school/:categoryType" element={<CategoryItemsDisplay />} />
+              <Route path="/profile" element={<UserProfile />} />
+              <Route path="/orders" element={<OrderHistory />} />
               <Route path="/cart" element={<CartDisplay />} />
+              <Route path="/checkout" element={<Checkout />} />
             </Routes>
             <Footer />
           </div>
