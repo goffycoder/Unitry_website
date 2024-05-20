@@ -1,19 +1,29 @@
 // SignUp.js
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import "./AuthForm.css"; // Using the updated CSS file name
+import "./AuthForm.css";
 import { useAuth } from '../../context/AuthContext';
+import { doc, setDoc } from 'firebase/firestore';
+import { firestore } from '../../firebase/firebaseConfig'; // Import your Firestore configuration
 
 const SignUp = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
   const { signup, currentUser, signInWithGoogle, signInWithFacebook } = useAuth();
+
   const handleSignUp = async (e) => {
     e.preventDefault();
     try {
-      await signup(email, password);
-      navigate('/'); // Navigate to homepage after sign-up
+      const userCredential = await signup(email, password);
+      // Create a new user document in Firestore after successful signup
+      await setDoc(doc(firestore, 'users', userCredential.user.uid), {
+        email: userCredential.user.email,
+        phoneNumber: "",  // Assuming you will add phone number field later
+        addresses: [],    // Empty array, ready for addresses to be added
+        orders: []        // Empty array, ready for order IDs to be added
+      });
+      navigate('/dashboard'); // Navigate to a dashboard or home page
     } catch (error) {
       alert(error.message); // Handle errors
     }
@@ -22,7 +32,7 @@ const SignUp = () => {
   const handleGoogleSignUp = async () => {
     try {
       await signInWithGoogle();
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       alert(error.message);
     }
@@ -31,7 +41,7 @@ const SignUp = () => {
   const handleFacebookSignUp = async () => {
     try {
       await signInWithFacebook();
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       alert(error.message);
     }
@@ -39,7 +49,7 @@ const SignUp = () => {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/");
+      navigate("/dashboard"); // Redirect if user is already signed in
     }
   }, [currentUser]);
 
