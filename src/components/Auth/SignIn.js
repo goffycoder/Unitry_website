@@ -1,7 +1,7 @@
 // SignIn.js
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./AuthForm.css"; // Renamed CSS file for clarity
+import "./AuthForm.css";
 import { useAuth } from "../../context/AuthContext";
 
 const SignIn = () => {
@@ -14,7 +14,7 @@ const SignIn = () => {
     e.preventDefault();
     try {
       await signin(email, password);
-      navigate("/"); // Navigate to homepage or dashboard after sign-in
+      navigate("/dashboard"); // Redirect to a dashboard or home page
     } catch (error) {
       alert(error.message);
     }
@@ -23,7 +23,7 @@ const SignIn = () => {
   const handleGoogleSignIn = async () => {
     try {
       await signInWithGoogle();
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       alert(error.message);
     }
@@ -32,7 +32,7 @@ const SignIn = () => {
   const handleFacebookSignIn = async () => {
     try {
       await signInWithFacebook();
-      navigate("/");
+      navigate("/dashboard");
     } catch (error) {
       alert(error.message);
     }
@@ -40,7 +40,7 @@ const SignIn = () => {
 
   useEffect(() => {
     if (currentUser) {
-      navigate("/");
+      navigate("/dashboard"); // Redirect if user is already signed in
     }
   }, [currentUser]);
 
