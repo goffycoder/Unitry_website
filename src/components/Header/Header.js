@@ -1,4 +1,5 @@
-import React from "react";
+// Header.js
+import React from 'react';
 import { Link } from "react-router-dom";
 import { Link as ScrollLink } from "react-scroll";
 import "./Header.css";
@@ -36,7 +37,11 @@ const Header = () => {
           <img src={cartIcon} alt="Cart" style={{ width: '24px', marginRight: '10px' }} />
         </Link>
         {currentUser ? (
-          <button onClick={() => signout()} className="button sign-out">Log Out</button>
+          <>
+            <Link to="/profile" className="button">Profile</Link>
+            <Link to="/orders" className="button">Orders</Link>
+            <button onClick={() => signout()} className="button sign-out">Log Out</button>
+          </>
         ) : (
           <>
             <Link to="/signin" className="button sign-in">
